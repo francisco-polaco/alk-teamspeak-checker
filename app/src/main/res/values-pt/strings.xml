@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">ALK Teamspeak Checker</string>
     <string name="action_about">Acerca</string>
+    <string name="title_activity_about">Acerca</string>
 </resources>

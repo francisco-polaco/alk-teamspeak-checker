@@ -1,5 +1,7 @@
 package com.alkuentrus.xxlxpto.alkteamspeakchecker;
 
+import android.content.ClipData;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String WEB_TS_CHECKER = "http://web.ist.utl.pt/~ist179719/ts/mobile.html";
     private WebView mWebView;
     private FloatingActionButton mRefreshButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_about) {
+            Intent i = new Intent(getApplicationContext(), AboutActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
