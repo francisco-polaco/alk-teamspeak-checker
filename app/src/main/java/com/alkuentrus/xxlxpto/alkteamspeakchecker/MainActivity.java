@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         mWebView = (WebView) findViewById(R.id.webView);
         mRefreshButton = (FloatingActionButton) findViewById(R.id.refresh);
 
+        prepareWebView();
+
         setEventOnClickListeners();
 
     }
@@ -58,24 +60,22 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
+       /* TODO: Quando implementar o acerca descomentar isto
+       if (id == R.id.action_about) {
             Intent i = new Intent(getApplicationContext(), AboutActivity.class);
             startActivity(i);
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
+    private void prepareWebView(){
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         if (Build.VERSION.SDK_INT >= 19) {
             webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         }
         mWebView.loadUrl(WEB_TS_CHECKER);
-        mRefreshButton.setClickable(true);
-
     }
+
+
 }
