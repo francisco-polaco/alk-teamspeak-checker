@@ -2,4 +2,7 @@
     <string name="app_name" translatable="false">ALK Teamspeak Checker</string>
     <string name="action_about">About</string>
     <string name="title_activity_about">About</string>
+    <string name="message_connection_dialog">Internet connection unavailable, please connect to the Internet.</string>
+    <string name="positivemsg_connection_dialog">Open connection settings</string>
+    <string name="negativemsg_connection_dialog">Exit</string>
 </resources>

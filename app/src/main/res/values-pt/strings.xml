@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ALK Teamspeak Checker</string>
     <string name="action_about">Acerca</string>
     <string name="title_activity_about">Acerca</string>
+    <string name="message_connection_dialog">Ligação à Internet indisponível, ligue </string>
+    <string name="positivemsg_connection_dialog">Abrir definições de ligação</string>
+    <string name="negativemsg_connection_dialog">Sair</string>
 </resources>
