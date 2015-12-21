@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         mRefreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mWebView.reload();
+                // mWebView.reload();
+                checkConnectionInternet();
             }
         });
     }
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     private void prepareWebView(){
+
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         if (Build.VERSION.SDK_INT >= 19) {
@@ -92,8 +94,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkConnectionInternet(){
-
-
+        /*
+        Verifica se ha ligacao a internet, se houver carrega o endereço da pagina da applet,
+        senao apresenta o dialogo de aviso.
+         */
         if(!isInternetAvainable()){
            showDialog();
         }else {
