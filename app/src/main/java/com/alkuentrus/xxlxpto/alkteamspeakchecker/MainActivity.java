@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(!isInternetAvainable()){
            showDialog();
-        }else
+        }else {
             mWebView.loadUrl(WEB_TS_CHECKER);
-
+        }
     }
 
     private boolean isInternetAvainable(){
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton(positiveMsg, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+                        startActivity(new Intent(Settings.ACTION_SETTINGS));
                     }
                 })
                 .setNegativeButton(negativeMsg, new DialogInterface.OnClickListener() {
