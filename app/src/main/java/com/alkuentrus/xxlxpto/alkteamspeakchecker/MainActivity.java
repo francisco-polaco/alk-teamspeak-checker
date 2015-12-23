@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        if (Build.VERSION.SDK_INT >= 19) {
+        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) { // 19
             webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         }
 
@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
     private void showDialog(){
         String message = getResources().getString(R.string.message_connection_dialog);
         String positiveMsg = getResources().getString(R.string.positivemsg_connection_dialog);
+       // String neutralMsg = getResources().getString(R.string.neutralmsg_connection_dialog);;
         String negativeMsg = getResources().getString(R.string.negativemsg_connection_dialog);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -125,9 +126,15 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton(positiveMsg, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        startActivity(new Intent(Settings.ACTION_SETTINGS));
+                        MainActivity.this.recreate();
                     }
                 })
+                /*.setNeutralButton(neutralMsg, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        startActivity(new Intent(Settings.ACTION_SETTINGS));
+                    }
+                })*/
                 .setNegativeButton(negativeMsg, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();

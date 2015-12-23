@@ -3,6 +3,7 @@
     <string name="action_about">Acerca</string>
     <string name="title_activity_about">Acerca</string>
     <string name="message_connection_dialog">Impossível estabelecer ligação à Internet.</string>
-    <string name="positivemsg_connection_dialog">Abrir definições</string>
+    <string name="positivemsg_connection_dialog">Tentar novamente</string>
     <string name="negativemsg_connection_dialog">Sair</string>
+    <string name="neutralmsg_connection_dialog">Abrir definições</string>
 </resources>
