@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         mRefreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // mWebView.reload();
                 checkConnectionInternet();
             }
         });
@@ -84,44 +83,27 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     private void prepareWebView(){
-
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) { // 19
             webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         }
-
     }
 
     private void checkConnectionInternet(){
-        /*
-        Verifica se ha ligacao a internet, se houver carrega o endereço da pagina da applet,
-        senao apresenta o dialogo de aviso.
-         */
-        if(!isInternetAvainable()){
+        if(!AppStatus.isInternetAvainable(getApplicationContext())){
            showDialog();
         }else {
             mWebView.loadUrl(WEB_TS_CHECKER);
         }
     }
 
-    private boolean isInternetAvainable(){
-        ConnectivityManager cm =
-                (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
-    }
-
     private void showDialog(){
         String message = getResources().getString(R.string.message_connection_dialog);
         String positiveMsg = getResources().getString(R.string.positivemsg_connection_dialog);
-       // String neutralMsg = getResources().getString(R.string.neutralmsg_connection_dialog);;
         String negativeMsg = getResources().getString(R.string.negativemsg_connection_dialog);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         builder.setMessage(message)
                 .setCancelable(false)
                 .setPositiveButton(positiveMsg, new DialogInterface.OnClickListener() {
