@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String WEB_TS_CHECKER = "http://web.ist.utl.pt/~ist179719/ts/mobile.html";
     private WebView mWebView;
     private FloatingActionButton mRefreshButton;
-
+    private SwipeRefreshLayout mSwipeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         mWebView = (WebView) findViewById(R.id.webView);
         mRefreshButton = (FloatingActionButton) findViewById(R.id.refresh);
+        mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
 
         prepareWebView();
 
@@ -40,15 +42,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        checkConnectionInternet();
+        checkInternetConnection();
 
     }
 
     private void setEventOnClickListeners(){
+        mSwipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //your method to refresh content
+                checkInternetConnection();
+            }
+        });
         mRefreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkConnectionInternet();
+                checkInternetConnection();
             }
         });
     }
@@ -83,11 +92,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkConnectionInternet(){
+    private void checkInternetConnection(){
         if(!AppStatus.isInternetAvainable(getApplicationContext())){
            showDialog();
         }else {
             mWebView.loadUrl(WEB_TS_CHECKER);
+        }
+        if(mSwipeLayout.isRefreshing()) {
+            mSwipeLayout.setRefreshing(false);
         }
     }
 
