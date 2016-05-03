@@ -1,15 +1,9 @@
 package com.alkuentrus.xxlxpto.alkteamspeakchecker;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,11 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String WEB_TS_CHECKER = "http://web.ist.utl.pt/~ist179719/ts/mobile.html";
+    private static final String WEB_TS_CHECKER = "http://web.ist.utl.pt/~ist179719/ts/mobile.html";
     private WebView mWebView;
     private FloatingActionButton mRefreshButton;
 
@@ -71,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        //int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
        /* TODO: Quando implementar o acerca descomentar isto

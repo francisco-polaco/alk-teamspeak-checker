@@ -7,7 +7,7 @@ import android.net.NetworkInfo;
 /**
  * Created by franc on 17/04/2016.
  */
-public class AppStatus {
+class AppStatus {
 
     public static boolean isInternetAvainable(Context context){
         ConnectivityManager cm =
