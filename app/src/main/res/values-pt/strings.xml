@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about">Acerca</string>
+    <string name="action_empty">Canais vazios</string>
     <string name="title_activity_about">Acerca</string>
     <string name="message_connection_dialog">Impossível estabelecer ligação à Internet.</string>
     <string name="positivemsg_connection_dialog">Tentar novamente</string>

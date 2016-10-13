@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        checkInternetConnection();
+        checkInternetConnection(true);
 
     }
 
@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 //your method to refresh content
-                checkInternetConnection();
+                checkInternetConnection(false);
             }
         });
         mRefreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkInternetConnection();
+                checkInternetConnection(false);
             }
         });
     }
@@ -73,14 +73,12 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        //int id = item.getItemId();
+        int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-       /* TODO: Quando implementar o acerca descomentar isto
-       if (id == R.id.action_about) {
-            Intent i = new Intent(getApplicationContext(), AboutActivity.class);
-            startActivity(i);
-        }*/
+        if (id == R.id.action_remove_empty) {
+            mWebView.loadUrl("javascript:TSV.ViewerScript.Loader.toggleEmptyChannels(1072685)");
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -92,11 +90,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkInternetConnection(){
+    private void checkInternetConnection(boolean onStart){
         if(!AppStatus.isInternetAvainable(getApplicationContext())){
            showDialog();
         }else {
-            mWebView.loadUrl(WEB_TS_CHECKER);
+            if(onStart) mWebView.loadUrl(WEB_TS_CHECKER);
+            else mWebView.loadUrl("javascript:TSV.ViewerScript.Loader.refresh(1072685)");
         }
         if(mSwipeLayout.isRefreshing()) {
             mSwipeLayout.setRefreshing(false);

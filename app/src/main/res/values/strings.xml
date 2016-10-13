@@ -6,4 +6,5 @@
     <string name="positivemsg_connection_dialog">Retry</string>
     <string name="negativemsg_connection_dialog">Exit</string>
     <string name="neutralmsg_connection_dialog">Open settings</string>
+    <string name="action_empty">Empty channels</string>
 </resources>
