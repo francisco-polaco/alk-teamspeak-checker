@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_remove_empty) {
             mWebView.loadUrl("javascript:TSV.ViewerScript.Loader.toggleEmptyChannels(1072685)");
+            item.setChecked(!item.isChecked());
         }
 
         return super.onOptionsItemSelected(item);
